@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="54e0234" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.3.0" camunda:diagramRelationId="1f09f294-aa2f-4194-9834-f084a2cb48ad">
+  <bpmn:message id="Message_1g7jvlt" name="93b2d7ce-2d76-4560-914c-f81c21095c08" zeebe:modelerTemplate="io.camunda.connectors.inbound.KafkaIntermediate.v1">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=name" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:collaboration id="Collaboration_1czq17r">
+    <bpmn:participant id="Participant_0e68c2z" name="Camunda 8" processRef="KafkaCamundaStockExample" />
+    <bpmn:participant id="Participant_1rhfxq5" name="Kafka" />
+    <bpmn:messageFlow id="Flow_067c71t" sourceRef="Participant_1rhfxq5" targetRef="StartEvent_1" />
+    <bpmn:messageFlow id="Flow_1e2mcs9" sourceRef="Activity_1e65lqu" targetRef="Participant_1rhfxq5" />
+    <bpmn:messageFlow id="Flow_0xtlem4" sourceRef="Participant_1rhfxq5" targetRef="Event_0ggerb9" />
+    <bpmn:messageFlow id="Flow_0iiw8am" sourceRef="Participant_1rhfxq5" targetRef="Event_1l3vgsx" />
+    <bpmn:messageFlow id="Flow_1adf51m" sourceRef="Activity_0rupnn8" targetRef="Participant_1rhfxq5" />
+  </bpmn:collaboration>
+  <bpmn:process id="KafkaCamundaStockExample" name="Kafka Stock Example" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_12l0mbi">{
+  "components": [
+    {
+      "text": "# Here's the data",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ee04a9",
+        "columns": null
+      },
+      "id": "Field_1uo9e5a"
+    },
+    {
+      "label": "name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0o6jea7",
+        "columns": null
+      },
+      "id": "Field_0rpvieu",
+      "key": "name"
+    },
+    {
+      "label": "details",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1avwqvo",
+        "columns": null
+      },
+      "id": "Field_1jwrk04",
+      "key": "details"
+    },
+    {
+      "label": "Wait for Upated Details",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_1tlfp98",
+        "columns": null
+      },
+      "id": "Field_160u9r4",
+      "key": "waitForUpdate",
+      "defaultValue": true
+    }
+  ],
+  "schemaVersion": 9,
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "48d65f3"
+  },
+  "type": "default",
+  "id": "look-at-incoming-data-15ltb2t",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_1v8jivn">{
+  "components": [
+    {
+      "text": "# Here's the data",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ee04a9",
+        "columns": null
+      },
+      "id": "Field_1uo9e5a"
+    },
+    {
+      "label": "name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0o6jea7",
+        "columns": null
+      },
+      "id": "Field_0rpvieu",
+      "key": "name"
+    },
+    {
+      "text": "### Messages So far:\n{{for x in details return \"&lt;br /&gt;\"+x}}",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_19bpjes",
+        "columns": null
+      },
+      "id": "Field_1nj6rnx"
+    },
+    {
+      "label": "Keep Listening for updates",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0eiz9cy",
+        "columns": null
+      },
+      "id": "Field_042rvk0",
+      "key": "waitForUpdate",
+      "description": "Tick this box if you want to continue to hear updates"
+    }
+  ],
+  "schemaVersion": 9,
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "8a43319"
+  },
+  "type": "default",
+  "id": "look-at-incoming-data-15ltb2t",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_23f8ubt">{
+  "components": [
+    {
+      "text": "# Here's the data",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ee04a9",
+        "columns": null
+      },
+      "id": "Field_1uo9e5a"
+    },
+    {
+      "label": "name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0o6jea7",
+        "columns": null
+      },
+      "id": "Field_0rpvieu",
+      "key": "name",
+      "readonly": true
+    },
+    {
+      "text": "### Messages So far:\n{{for x in details return \"&lt;br /&gt;\"+x}}",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0wyy1h9",
+        "columns": null
+      },
+      "id": "Field_1dmbo0s"
+    },
+    {
+      "label": "Updated",
+      "type": "number",
+      "layout": {
+        "row": "Row_0okcmkm",
+        "columns": null
+      },
+      "id": "Field_006vndi",
+      "key": "updated",
+      "description": "The number of times the data was updated",
+      "readonly": true
+    }
+  ],
+  "schemaVersion": 9,
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "8a43319"
+  },
+  "type": "default",
+  "id": "look-at-incoming-data-15ltb2t",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0"
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:inclusiveGateway id="Gateway_0uq3ywa">
+      <bpmn:incoming>Flow_15pybmr</bpmn:incoming>
+      <bpmn:outgoing>Flow_1hzjtz2</bpmn:outgoing>
+      <bpmn:outgoing>Flow_11aqner</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:userTask id="Activity_0vxs5qz" name="Confirm Stock Details">
+      <bpmn:extensionElements>
+        <zeebe:ioMapping>
+          <zeebe:output source="=0" target="updated" />
+          <zeebe:output source="=waitForUpdate" target="waitForUpdate" />
+        </zeebe:ioMapping>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_1v8jivn" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1lkc6qj</bpmn:incoming>
+      <bpmn:outgoing>Flow_15pybmr</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:startEvent id="StartEvent_1" name="Stock Tracking Active" zeebe:modelerTemplate="io.camunda.connectors.inbound.KAFKA.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 256 416&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; preserveAspectRatio=&#39;xMidYMid&#39;%3E%3Cpath d=&#39;M201.816 230.216c-16.186 0-30.697 7.171-40.634 18.461l-25.463-18.026c2.703-7.442 4.255-15.433 4.255-23.797 0-8.219-1.498-16.076-4.112-23.408l25.406-17.835c9.936 11.233 24.409 18.365 40.548 18.365 29.875 0 54.184-24.305 54.184-54.184 0-29.879-24.309-54.184-54.184-54.184-29.875 0-54.184 24.305-54.184 54.184 0 5.348.808 10.505 2.258 15.389l-25.423 17.844c-10.62-13.175-25.911-22.374-43.333-25.182v-30.64c24.544-5.155 43.037-26.962 43.037-53.019C124.171 24.305 99.862 0 69.987 0 40.112 0 15.803 24.305 15.803 54.184c0 25.708 18.014 47.246 42.067 52.769v31.038C25.044 143.753 0 172.401 0 206.854c0 34.621 25.292 63.374 58.355 68.94v32.774c-24.299 5.341-42.552 27.011-42.552 52.894 0 29.879 24.309 54.184 54.184 54.184 29.875 0 54.184-24.305 54.184-54.184 0-25.883-18.253-47.553-42.552-52.894v-32.775a69.965 69.965 0 0 0 42.6-24.776l25.633 18.143c-1.423 4.84-2.22 9.946-2.22 15.24 0 29.879 24.309 54.184 54.184 54.184 29.875 0 54.184-24.305 54.184-54.184 0-29.879-24.309-54.184-54.184-54.184zm0-126.695c14.487 0 26.27 11.788 26.27 26.271s-11.783 26.27-26.27 26.27-26.27-11.787-26.27-26.27c0-14.483 11.783-26.271 26.27-26.271zm-158.1-49.337c0-14.483 11.784-26.27 26.271-26.27s26.27 11.787 26.27 26.27c0 14.483-11.783 26.27-26.27 26.27s-26.271-11.787-26.271-26.27zm52.541 307.278c0 14.483-11.783 26.27-26.27 26.27s-26.271-11.787-26.271-26.27c0-14.483 11.784-26.27 26.271-26.27s26.27 11.787 26.27 26.27zm-26.272-117.97c-20.205 0-36.642-16.434-36.642-36.638 0-20.205 16.437-36.642 36.642-36.642 20.204 0 36.641 16.437 36.641 36.642 0 20.204-16.437 36.638-36.641 36.638zm131.831 67.179c-14.487 0-26.27-11.788-26.27-26.271s11.783-26.27 26.27-26.27 26.27 11.787 26.27 26.27c0 14.483-11.783 26.271-26.27 26.271z&#39; style=&#39;fill:%23231f20&#39;/%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:properties>
+          <zeebe:property name="inbound.type" value="io.camunda:connector-kafka-inbound:1" />
+          <zeebe:property name="authenticationType" value="credentials" />
+          <zeebe:property name="authentication.username" value="secrets.KafkaUsername" />
+          <zeebe:property name="authentication.password" value="secrets.KafkaPassword" />
+          <zeebe:property name="topic.bootstrapServers" value="secrets.KafkaBootstrapServer" />
+          <zeebe:property name="topic.topicName" value="NewDetails" />
+          <zeebe:property name="autoOffsetReset" value="latest" />
+          <zeebe:property name="activationCondition" value="=(value.newStock = true)" />
+          <zeebe:property name="resultVariable" value="startMessageRaw" />
+          <zeebe:property name="resultExpression" value="={&#10;  name : value.name,&#10;  details : [value.details],&#10;  value : value.value&#10;  &#10;}" />
+        </zeebe:properties>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_1lkc6qj</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_0sgt8gq" name="Review Stock Performance">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_23f8ubt" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1uk9ebf</bpmn:incoming>
+      <bpmn:outgoing>Flow_025u5sp</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_04plihb">
+      <bpmn:incoming>Flow_1cjfpr2</bpmn:incoming>
+      <bpmn:incoming>Flow_0lt4oek</bpmn:incoming>
+      <bpmn:incoming>Flow_1f4csy0</bpmn:incoming>
+      <bpmn:outgoing>Flow_1uk9ebf</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:eventBasedGateway id="Gateway_1fktzfc">
+      <bpmn:incoming>Flow_1ite5ki</bpmn:incoming>
+      <bpmn:outgoing>Flow_0x55w29</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1tattre</bpmn:outgoing>
+    </bpmn:eventBasedGateway>
+    <bpmn:intermediateCatchEvent id="Event_0x3elsa" name="Wait for 1 Min">
+      <bpmn:incoming>Flow_1tattre</bpmn:incoming>
+      <bpmn:outgoing>Flow_1cjfpr2</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1ecixl6">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1M</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:intermediateCatchEvent id="Event_0ggerb9" name="Confirmation It was Added" zeebe:modelerTemplate="io.camunda.connectors.inbound.KafkaIntermediate.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 256 416&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; preserveAspectRatio=&#39;xMidYMid&#39;%3E%3Cpath d=&#39;M201.816 230.216c-16.186 0-30.697 7.171-40.634 18.461l-25.463-18.026c2.703-7.442 4.255-15.433 4.255-23.797 0-8.219-1.498-16.076-4.112-23.408l25.406-17.835c9.936 11.233 24.409 18.365 40.548 18.365 29.875 0 54.184-24.305 54.184-54.184 0-29.879-24.309-54.184-54.184-54.184-29.875 0-54.184 24.305-54.184 54.184 0 5.348.808 10.505 2.258 15.389l-25.423 17.844c-10.62-13.175-25.911-22.374-43.333-25.182v-30.64c24.544-5.155 43.037-26.962 43.037-53.019C124.171 24.305 99.862 0 69.987 0 40.112 0 15.803 24.305 15.803 54.184c0 25.708 18.014 47.246 42.067 52.769v31.038C25.044 143.753 0 172.401 0 206.854c0 34.621 25.292 63.374 58.355 68.94v32.774c-24.299 5.341-42.552 27.011-42.552 52.894 0 29.879 24.309 54.184 54.184 54.184 29.875 0 54.184-24.305 54.184-54.184 0-25.883-18.253-47.553-42.552-52.894v-32.775a69.965 69.965 0 0 0 42.6-24.776l25.633 18.143c-1.423 4.84-2.22 9.946-2.22 15.24 0 29.879 24.309 54.184 54.184 54.184 29.875 0 54.184-24.305 54.184-54.184 0-29.879-24.309-54.184-54.184-54.184zm0-126.695c14.487 0 26.27 11.788 26.27 26.271s-11.783 26.27-26.27 26.27-26.27-11.787-26.27-26.27c0-14.483 11.783-26.271 26.27-26.271zm-158.1-49.337c0-14.483 11.784-26.27 26.271-26.27s26.27 11.787 26.27 26.27c0 14.483-11.783 26.27-26.27 26.27s-26.271-11.787-26.271-26.27zm52.541 307.278c0 14.483-11.783 26.27-26.27 26.27s-26.271-11.787-26.271-26.27c0-14.483 11.784-26.27 26.271-26.27s26.27 11.787 26.27 26.27zm-26.272-117.97c-20.205 0-36.642-16.434-36.642-36.638 0-20.205 16.437-36.642 36.642-36.642 20.204 0 36.641 16.437 36.641 36.642 0 20.204-16.437 36.638-36.641 36.638zm131.831 67.179c-14.487 0-26.27-11.788-26.27-26.271s11.783-26.27 26.27-26.27 26.27 11.787 26.27 26.27c0 14.483-11.783 26.271-26.27 26.271z&#39; style=&#39;fill:%23231f20&#39;/%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:properties>
+          <zeebe:property name="inbound.type" value="io.camunda:connector-kafka-inbound:1" />
+          <zeebe:property name="authenticationType" value="credentials" />
+          <zeebe:property name="authentication.username" value="secrets.KafkaUsername" />
+          <zeebe:property name="authentication.password" value="secrets.KafkaPassword" />
+          <zeebe:property name="topic.bootstrapServers" value="secrets.KafkaBootstrapServer" />
+          <zeebe:property name="topic.topicName" value="Portfolio" />
+          <zeebe:property name="autoOffsetReset" value="latest" />
+          <zeebe:property name="correlationKeyExpression" value="=value.name" />
+          <zeebe:property name="resultExpression" value="={&#10;  source : value.source&#10;}" />
+        </zeebe:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0x55w29</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lt4oek</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0wnuzc4" messageRef="Message_1g7jvlt" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:serviceTask id="Activity_1e65lqu" name="Add To Portfolio" zeebe:modelerTemplate="io.camunda.connectors.KAFKA.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 256 416&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; preserveAspectRatio=&#39;xMidYMid&#39;%3E%3Cpath d=&#39;M201.816 230.216c-16.186 0-30.697 7.171-40.634 18.461l-25.463-18.026c2.703-7.442 4.255-15.433 4.255-23.797 0-8.219-1.498-16.076-4.112-23.408l25.406-17.835c9.936 11.233 24.409 18.365 40.548 18.365 29.875 0 54.184-24.305 54.184-54.184 0-29.879-24.309-54.184-54.184-54.184-29.875 0-54.184 24.305-54.184 54.184 0 5.348.808 10.505 2.258 15.389l-25.423 17.844c-10.62-13.175-25.911-22.374-43.333-25.182v-30.64c24.544-5.155 43.037-26.962 43.037-53.019C124.171 24.305 99.862 0 69.987 0 40.112 0 15.803 24.305 15.803 54.184c0 25.708 18.014 47.246 42.067 52.769v31.038C25.044 143.753 0 172.401 0 206.854c0 34.621 25.292 63.374 58.355 68.94v32.774c-24.299 5.341-42.552 27.011-42.552 52.894 0 29.879 24.309 54.184 54.184 54.184 29.875 0 54.184-24.305 54.184-54.184 0-25.883-18.253-47.553-42.552-52.894v-32.775a69.965 69.965 0 0 0 42.6-24.776l25.633 18.143c-1.423 4.84-2.22 9.946-2.22 15.24 0 29.879 24.309 54.184 54.184 54.184 29.875 0 54.184-24.305 54.184-54.184 0-29.879-24.309-54.184-54.184-54.184zm0-126.695c14.487 0 26.27 11.788 26.27 26.271s-11.783 26.27-26.27 26.27-26.27-11.787-26.27-26.27c0-14.483 11.783-26.271 26.27-26.271zm-158.1-49.337c0-14.483 11.784-26.27 26.271-26.27s26.27 11.787 26.27 26.27c0 14.483-11.783 26.27-26.27 26.27s-26.271-11.787-26.271-26.27zm52.541 307.278c0 14.483-11.783 26.27-26.27 26.27s-26.271-11.787-26.271-26.27c0-14.483 11.784-26.27 26.271-26.27s26.27 11.787 26.27 26.27zm-26.272-117.97c-20.205 0-36.642-16.434-36.642-36.638 0-20.205 16.437-36.642 36.642-36.642 20.204 0 36.641 16.437 36.641 36.642 0 20.204-16.437 36.638-36.641 36.638zm131.831 67.179c-14.487 0-26.27-11.788-26.27-26.271s11.783-26.27 26.27-26.27 26.27 11.787 26.27 26.27c0 14.483-11.783 26.271-26.27 26.271z&#39; style=&#39;fill:%23231f20&#39;/%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:connector-kafka:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="secrets.KafkaUsername" target="authentication.username" />
+          <zeebe:input source="secrets.KafkaPassword" target="authentication.password" />
+          <zeebe:input source="secrets.KafkaBootstrapServer" target="topic.bootstrapServers" />
+          <zeebe:input source="Portfolio" target="topic.topicName" />
+          <zeebe:input source="99" target="message.key" />
+          <zeebe:input source="={&#34;name&#34;: name,&#10;&#34;source&#34; : &#34;Camunda&#34;}" target="message.value" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultVariable" value="KafkaResult" />
+          <zeebe:header key="errorExpression" value="=if error.code = 404 then&#10;  bpmnError(&#34;Error404&#34;, &#34;Got a 404&#34;)&#10;else&#10;  null" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_11aqner</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ite5ki</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_052pab9" name="Terminate Kafka Test">
+      <bpmn:incoming>Flow_07738ln</bpmn:incoming>
+      <bpmn:terminateEventDefinition id="TerminateEventDefinition_0a0q61l" />
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Activity_0rupnn8" name="Sell Stock" zeebe:modelerTemplate="io.camunda.connectors.KAFKA.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 256 416&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; preserveAspectRatio=&#39;xMidYMid&#39;%3E%3Cpath d=&#39;M201.816 230.216c-16.186 0-30.697 7.171-40.634 18.461l-25.463-18.026c2.703-7.442 4.255-15.433 4.255-23.797 0-8.219-1.498-16.076-4.112-23.408l25.406-17.835c9.936 11.233 24.409 18.365 40.548 18.365 29.875 0 54.184-24.305 54.184-54.184 0-29.879-24.309-54.184-54.184-54.184-29.875 0-54.184 24.305-54.184 54.184 0 5.348.808 10.505 2.258 15.389l-25.423 17.844c-10.62-13.175-25.911-22.374-43.333-25.182v-30.64c24.544-5.155 43.037-26.962 43.037-53.019C124.171 24.305 99.862 0 69.987 0 40.112 0 15.803 24.305 15.803 54.184c0 25.708 18.014 47.246 42.067 52.769v31.038C25.044 143.753 0 172.401 0 206.854c0 34.621 25.292 63.374 58.355 68.94v32.774c-24.299 5.341-42.552 27.011-42.552 52.894 0 29.879 24.309 54.184 54.184 54.184 29.875 0 54.184-24.305 54.184-54.184 0-25.883-18.253-47.553-42.552-52.894v-32.775a69.965 69.965 0 0 0 42.6-24.776l25.633 18.143c-1.423 4.84-2.22 9.946-2.22 15.24 0 29.879 24.309 54.184 54.184 54.184 29.875 0 54.184-24.305 54.184-54.184 0-29.879-24.309-54.184-54.184-54.184zm0-126.695c14.487 0 26.27 11.788 26.27 26.271s-11.783 26.27-26.27 26.27-26.27-11.787-26.27-26.27c0-14.483 11.783-26.271 26.27-26.271zm-158.1-49.337c0-14.483 11.784-26.27 26.271-26.27s26.27 11.787 26.27 26.27c0 14.483-11.783 26.27-26.27 26.27s-26.271-11.787-26.271-26.27zm52.541 307.278c0 14.483-11.783 26.27-26.27 26.27s-26.271-11.787-26.271-26.27c0-14.483 11.784-26.27 26.271-26.27s26.27 11.787 26.27 26.27zm-26.272-117.97c-20.205 0-36.642-16.434-36.642-36.638 0-20.205 16.437-36.642 36.642-36.642 20.204 0 36.641 16.437 36.641 36.642 0 20.204-16.437 36.638-36.641 36.638zm131.831 67.179c-14.487 0-26.27-11.788-26.27-26.271s11.783-26.27 26.27-26.27 26.27 11.787 26.27 26.27c0 14.483-11.783 26.271-26.27 26.271z&#39; style=&#39;fill:%23231f20&#39;/%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:connector-kafka:1" />
+        <zeebe:ioMapping>
+          <zeebe:input source="secrets.KafkaUsername" target="authentication.username" />
+          <zeebe:input source="secrets.KafkaPassword" target="authentication.password" />
+          <zeebe:input source="secrets.KafkaBootstrapServer" target="topic.bootstrapServers" />
+          <zeebe:input source="Portfolio" target="topic.topicName" />
+          <zeebe:input source="99" target="message.key" />
+          <zeebe:input source="={&#34;name&#34;: name,&#10;&#34;source&#34; : &#34;Camunda&#34;}" target="message.value" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultVariable" value="KafkaResult" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_025u5sp</bpmn:incoming>
+      <bpmn:outgoing>Flow_07738ln</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_1mp1ejb" name="Add to Portfolio Manually">
+      <bpmn:incoming>Flow_16x7sux</bpmn:incoming>
+      <bpmn:outgoing>Flow_1f4csy0</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:intermediateCatchEvent id="Event_1l3vgsx" name="Waiting for Stock Updates" zeebe:modelerTemplate="io.camunda.connectors.inbound.KafkaIntermediate.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 256 416&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; preserveAspectRatio=&#39;xMidYMid&#39;%3E%3Cpath d=&#39;M201.816 230.216c-16.186 0-30.697 7.171-40.634 18.461l-25.463-18.026c2.703-7.442 4.255-15.433 4.255-23.797 0-8.219-1.498-16.076-4.112-23.408l25.406-17.835c9.936 11.233 24.409 18.365 40.548 18.365 29.875 0 54.184-24.305 54.184-54.184 0-29.879-24.309-54.184-54.184-54.184-29.875 0-54.184 24.305-54.184 54.184 0 5.348.808 10.505 2.258 15.389l-25.423 17.844c-10.62-13.175-25.911-22.374-43.333-25.182v-30.64c24.544-5.155 43.037-26.962 43.037-53.019C124.171 24.305 99.862 0 69.987 0 40.112 0 15.803 24.305 15.803 54.184c0 25.708 18.014 47.246 42.067 52.769v31.038C25.044 143.753 0 172.401 0 206.854c0 34.621 25.292 63.374 58.355 68.94v32.774c-24.299 5.341-42.552 27.011-42.552 52.894 0 29.879 24.309 54.184 54.184 54.184 29.875 0 54.184-24.305 54.184-54.184 0-25.883-18.253-47.553-42.552-52.894v-32.775a69.965 69.965 0 0 0 42.6-24.776l25.633 18.143c-1.423 4.84-2.22 9.946-2.22 15.24 0 29.879 24.309 54.184 54.184 54.184 29.875 0 54.184-24.305 54.184-54.184 0-29.879-24.309-54.184-54.184-54.184zm0-126.695c14.487 0 26.27 11.788 26.27 26.271s-11.783 26.27-26.27 26.27-26.27-11.787-26.27-26.27c0-14.483 11.783-26.271 26.27-26.271zm-158.1-49.337c0-14.483 11.784-26.27 26.271-26.27s26.27 11.787 26.27 26.27c0 14.483-11.783 26.27-26.27 26.27s-26.271-11.787-26.271-26.27zm52.541 307.278c0 14.483-11.783 26.27-26.27 26.27s-26.271-11.787-26.271-26.27c0-14.483 11.784-26.27 26.271-26.27s26.27 11.787 26.27 26.27zm-26.272-117.97c-20.205 0-36.642-16.434-36.642-36.638 0-20.205 16.437-36.642 36.642-36.642 20.204 0 36.641 16.437 36.641 36.642 0 20.204-16.437 36.638-36.641 36.638zm131.831 67.179c-14.487 0-26.27-11.788-26.27-26.271s11.783-26.27 26.27-26.27 26.27 11.787 26.27 26.27c0 14.483-11.783 26.271-26.27 26.271z&#39; style=&#39;fill:%23231f20&#39;/%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:properties>
+          <zeebe:property name="inbound.type" value="io.camunda:connector-kafka-inbound:1" />
+          <zeebe:property name="authenticationType" value="credentials" />
+          <zeebe:property name="authentication.username" value="secrets.KafkaUsername" />
+          <zeebe:property name="authentication.password" value="secrets.KafkaPassword" />
+          <zeebe:property name="topic.bootstrapServers" value="secrets.KafkaBootstrapServer" />
+          <zeebe:property name="topic.topicName" value="NewDetails" />
+          <zeebe:property name="autoOffsetReset" value="latest" />
+          <zeebe:property name="correlationKeyExpression" value="=value.name" />
+          <zeebe:property name="activationCondition" value="=(value.newStock = false)" />
+          <zeebe:property name="resultVariable" value="newDetailsRaw" />
+          <zeebe:property name="resultExpression" value="={ &#10;  newDetails : value.details&#10;}" />
+        </zeebe:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1hzjtz2</bpmn:incoming>
+      <bpmn:incoming>Flow_1fxr60w</bpmn:incoming>
+      <bpmn:outgoing>Flow_1smzl9g</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0bkwi27" messageRef="Message_102ucqe" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:boundaryEvent id="Event_049z40e" name="Error 404" attachedToRef="Activity_1e65lqu">
+      <bpmn:outgoing>Flow_16x7sux</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0rh2d94" errorRef="Error_12i33ka" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_15pybmr" sourceRef="Activity_0vxs5qz" targetRef="Gateway_0uq3ywa" />
+    <bpmn:sequenceFlow id="Flow_1hzjtz2" name="Wait for updates" sourceRef="Gateway_0uq3ywa" targetRef="Event_1l3vgsx">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=waitForUpdate</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_11aqner" name="always" sourceRef="Gateway_0uq3ywa" targetRef="Activity_1e65lqu">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1lkc6qj" sourceRef="StartEvent_1" targetRef="Activity_0vxs5qz" />
+    <bpmn:sequenceFlow id="Flow_1uk9ebf" sourceRef="Gateway_04plihb" targetRef="Activity_0sgt8gq" />
+    <bpmn:sequenceFlow id="Flow_025u5sp" sourceRef="Activity_0sgt8gq" targetRef="Activity_0rupnn8" />
+    <bpmn:sequenceFlow id="Flow_1cjfpr2" sourceRef="Event_0x3elsa" targetRef="Gateway_04plihb" />
+    <bpmn:sequenceFlow id="Flow_0lt4oek" sourceRef="Event_0ggerb9" targetRef="Gateway_04plihb" />
+    <bpmn:sequenceFlow id="Flow_1f4csy0" sourceRef="Activity_1mp1ejb" targetRef="Gateway_04plihb" />
+    <bpmn:sequenceFlow id="Flow_1ite5ki" sourceRef="Activity_1e65lqu" targetRef="Gateway_1fktzfc" />
+    <bpmn:sequenceFlow id="Flow_1tattre" sourceRef="Gateway_1fktzfc" targetRef="Event_0x3elsa" />
+    <bpmn:sequenceFlow id="Flow_0x55w29" sourceRef="Gateway_1fktzfc" targetRef="Event_0ggerb9" />
+    <bpmn:sequenceFlow id="Flow_07738ln" sourceRef="Activity_0rupnn8" targetRef="Event_052pab9" />
+    <bpmn:sequenceFlow id="Flow_16x7sux" sourceRef="Event_049z40e" targetRef="Activity_1mp1ejb" />
+    <bpmn:sequenceFlow id="Flow_1fxr60w" sourceRef="Activity_0oe7465" targetRef="Event_1l3vgsx" />
+    <bpmn:sequenceFlow id="Flow_1smzl9g" sourceRef="Event_1l3vgsx" targetRef="Activity_0oe7465" />
+    <bpmn:scriptTask id="Activity_0oe7465" name="Add new details to list">
+      <bpmn:extensionElements>
+        <zeebe:script expression="=append(details, newDetails)&#10;" resultVariable="details" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=updated+1" target="updated" />
+          <zeebe:output source="=details" target="details" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1smzl9g</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fxr60w</bpmn:outgoing>
+    </bpmn:scriptTask>
+  </bpmn:process>
+  <bpmn:message id="Message_102ucqe" name="25320133-ca8d-4096-889d-c6ea582e9d0b" zeebe:modelerTemplate="io.camunda.connectors.inbound.KafkaIntermediate.v1">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=name" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:error id="Error_12i33ka" name="Error404" errorCode="Error404" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1czq17r">
+      <bpmndi:BPMNShape id="Participant_0e68c2z_di" bpmnElement="Participant_0e68c2z" isHorizontal="true">
+        <dc:Bounds x="160" y="220" width="1408" height="570" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0vjoquc_di" bpmnElement="Gateway_0uq3ywa">
+        <dc:Bounds x="435" y="333" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yfagt9_di" bpmnElement="Activity_0vxs5qz">
+        <dc:Bounds x="290" y="318" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1gtze4f_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="212" y="340" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="196" y="383" width="72" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0h7x8zq_di" bpmnElement="Activity_0sgt8gq">
+        <dc:Bounds x="1170" y="318" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_04plihb_di" bpmnElement="Gateway_04plihb" isMarkerVisible="true">
+        <dc:Bounds x="1065" y="333" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1qdad3h_di" bpmnElement="Gateway_1fktzfc">
+        <dc:Bounds x="845" y="333" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_17u0gbz_di" bpmnElement="Event_0x3elsa">
+        <dc:Bounds x="982" y="340" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="967" y="383" width="67" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0aq64b4_di" bpmnElement="Event_0ggerb9">
+        <dc:Bounds x="982" y="242" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="966" y="285" width="69" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1dk3dh8_di" bpmnElement="Activity_1e65lqu">
+        <dc:Bounds x="680" y="318" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0zru38m_di" bpmnElement="Event_052pab9">
+        <dc:Bounds x="1472" y="340" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1451" y="383" width="78" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_16n3b35" bpmnElement="Activity_0rupnn8">
+        <dc:Bounds x="1320" y="318" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1bzge8h_di" bpmnElement="Activity_1mp1ejb">
+        <dc:Bounds x="830" y="440" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0kqhkis_di" bpmnElement="Event_1l3vgsx">
+        <dc:Bounds x="562" y="572" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="588" y="546" width="84" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1rrttx3_di" bpmnElement="Activity_0oe7465">
+        <dc:Bounds x="680" y="550" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_04qhbvh_di" bpmnElement="Event_049z40e">
+        <dc:Bounds x="742" y="380" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="707" y="423" width="46" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_15pybmr_di" bpmnElement="Flow_15pybmr">
+        <di:waypoint x="390" y="358" />
+        <di:waypoint x="435" y="358" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hzjtz2_di" bpmnElement="Flow_1hzjtz2">
+        <di:waypoint x="460" y="383" />
+        <di:waypoint x="460" y="590" />
+        <di:waypoint x="562" y="590" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="469" y="613" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11aqner_di" bpmnElement="Flow_11aqner">
+        <di:waypoint x="485" y="358" />
+        <di:waypoint x="680" y="358" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="527" y="340" width="37" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1lkc6qj_di" bpmnElement="Flow_1lkc6qj">
+        <di:waypoint x="248" y="358" />
+        <di:waypoint x="290" y="358" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1uk9ebf_di" bpmnElement="Flow_1uk9ebf">
+        <di:waypoint x="1115" y="358" />
+        <di:waypoint x="1170" y="358" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_025u5sp_di" bpmnElement="Flow_025u5sp">
+        <di:waypoint x="1270" y="358" />
+        <di:waypoint x="1320" y="358" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1cjfpr2_di" bpmnElement="Flow_1cjfpr2">
+        <di:waypoint x="1018" y="358" />
+        <di:waypoint x="1065" y="358" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lt4oek_di" bpmnElement="Flow_0lt4oek">
+        <di:waypoint x="1018" y="260" />
+        <di:waypoint x="1090" y="260" />
+        <di:waypoint x="1090" y="333" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1f4csy0_di" bpmnElement="Flow_1f4csy0">
+        <di:waypoint x="930" y="480" />
+        <di:waypoint x="1090" y="480" />
+        <di:waypoint x="1090" y="383" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ite5ki_di" bpmnElement="Flow_1ite5ki">
+        <di:waypoint x="780" y="358" />
+        <di:waypoint x="845" y="358" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tattre_di" bpmnElement="Flow_1tattre">
+        <di:waypoint x="895" y="358" />
+        <di:waypoint x="982" y="358" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0x55w29_di" bpmnElement="Flow_0x55w29">
+        <di:waypoint x="870" y="333" />
+        <di:waypoint x="870" y="260" />
+        <di:waypoint x="982" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07738ln_di" bpmnElement="Flow_07738ln">
+        <di:waypoint x="1420" y="358" />
+        <di:waypoint x="1472" y="358" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16x7sux_di" bpmnElement="Flow_16x7sux">
+        <di:waypoint x="760" y="416" />
+        <di:waypoint x="760" y="480" />
+        <di:waypoint x="830" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fxr60w_di" bpmnElement="Flow_1fxr60w">
+        <di:waypoint x="780" y="590" />
+        <di:waypoint x="840" y="590" />
+        <di:waypoint x="840" y="700" />
+        <di:waypoint x="580" y="700" />
+        <di:waypoint x="580" y="608" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1smzl9g_di" bpmnElement="Flow_1smzl9g">
+        <di:waypoint x="598" y="590" />
+        <di:waypoint x="680" y="590" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_1kig4jf_di" bpmnElement="Participant_1rhfxq5" isHorizontal="true">
+        <dc:Bounds x="160" y="90" width="1408" height="60" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_067c71t_di" bpmnElement="Flow_067c71t">
+        <di:waypoint x="230" y="150" />
+        <di:waypoint x="230" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1e2mcs9_di" bpmnElement="Flow_1e2mcs9">
+        <di:waypoint x="730" y="318" />
+        <di:waypoint x="730" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xtlem4_di" bpmnElement="Flow_0xtlem4">
+        <di:waypoint x="1000" y="150" />
+        <di:waypoint x="1000" y="242" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0iiw8am_di" bpmnElement="Flow_0iiw8am">
+        <di:waypoint x="580" y="150" />
+        <di:waypoint x="580" y="572" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1adf51m_di" bpmnElement="Flow_1adf51m">
+        <di:waypoint x="1370" y="318" />
+        <di:waypoint x="1370" y="150" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,56 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "76eb06a"
+  },
+  "schemaVersion": 9,
+  "components": [
+    {
+      "text": "# Here's the data",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ee04a9",
+        "columns": null
+      },
+      "id": "Field_1uo9e5a"
+    },
+    {
+      "label": "name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0o6jea7",
+        "columns": null
+      },
+      "id": "Field_0rpvieu",
+      "key": "name",
+      "readonly": true
+    },
+    {
+      "text": "### Messages So far:\n{{for x in details return \"<br />\"+x}}",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0wyy1h9",
+        "columns": null
+      },
+      "id": "Field_1dmbo0s"
+    },
+    {
+      "label": "Updated",
+      "type": "number",
+      "layout": {
+        "row": "Row_0okcmkm",
+        "columns": null
+      },
+      "id": "Field_006vndi",
+      "key": "updated",
+      "description": "The number of times the data was updated",
+      "readonly": true
+    }
+  ],
+  "type": "default",
+  "id": "look-at-incoming-data-15ltb2t"
+}
