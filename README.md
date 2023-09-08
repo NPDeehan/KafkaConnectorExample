@@ -12,7 +12,7 @@ Connecting the two systems requires authentication and from your Kafka instance 
 * **Password** - Same as the username, it’s part of the API Key creation
 * **Bootstrap** **Server** - After you create a Kafka cluster you’ll find this in the cluster settings.
 
-🔐 It’s important to know that it’s best practice not to simply copy and paste this sensitive information directly into the model but rather to [create a secret](https://docs.camunda.io/docs/components/console/manage-clusters/manage-secrets/) for each of these in your Camunda cluster. Then you can reference it by typing `secrete.` followed by the name of the key you want to access. 
+🔐 It’s important to know that it’s best practice not to simply copy and paste this sensitive information directly into the model but rather to [create a secret](https://docs.camunda.io/docs/components/console/manage-clusters/manage-secrets/) for each of these in your Camunda cluster. Then you can reference it by typing `{{secrete.yourSecreteHere}}` followed by the name of the key you want to access. 
 
 For this example to work you'll need to create secretes with the following names:
 * KafkaUsername
