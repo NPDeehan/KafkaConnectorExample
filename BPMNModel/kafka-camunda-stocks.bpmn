@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="54e0234" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.3.0" camunda:diagramRelationId="1f09f294-aa2f-4194-9834-f084a2cb48ad">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="917d9a1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.3.0" camunda:diagramRelationId="1f09f294-aa2f-4194-9834-f084a2cb48ad">
   <bpmn:message id="Message_1g7jvlt" name="93b2d7ce-2d76-4560-914c-f81c21095c08" zeebe:modelerTemplate="io.camunda.connectors.inbound.KafkaIntermediate.v1">
     <bpmn:extensionElements>
       <zeebe:subscription correlationKey="=name" />
@@ -202,9 +202,9 @@
         <zeebe:properties>
           <zeebe:property name="inbound.type" value="io.camunda:connector-kafka-inbound:1" />
           <zeebe:property name="authenticationType" value="credentials" />
-          <zeebe:property name="authentication.username" value="secrets.KafkaUsername" />
-          <zeebe:property name="authentication.password" value="secrets.KafkaPassword" />
-          <zeebe:property name="topic.bootstrapServers" value="secrets.KafkaBootstrapServer" />
+          <zeebe:property name="authentication.username" value="{{secrets.KafkaUsername}}" />
+          <zeebe:property name="authentication.password" value="{{secrets.KafkaPassword}}" />
+          <zeebe:property name="topic.bootstrapServers" value="{{secrets.KafkaBootstrapServer}}" />
           <zeebe:property name="topic.topicName" value="NewDetails" />
           <zeebe:property name="autoOffsetReset" value="latest" />
           <zeebe:property name="activationCondition" value="=(value.newStock = true)" />
@@ -244,9 +244,9 @@
         <zeebe:properties>
           <zeebe:property name="inbound.type" value="io.camunda:connector-kafka-inbound:1" />
           <zeebe:property name="authenticationType" value="credentials" />
-          <zeebe:property name="authentication.username" value="secrets.KafkaUsername" />
-          <zeebe:property name="authentication.password" value="secrets.KafkaPassword" />
-          <zeebe:property name="topic.bootstrapServers" value="secrets.KafkaBootstrapServer" />
+          <zeebe:property name="authentication.username" value="{{secrets.KafkaUsername}}" />
+          <zeebe:property name="authentication.password" value="{{secrets.KafkaPassword}}" />
+          <zeebe:property name="topic.bootstrapServers" value="{{secrets.KafkaBootstrapServer}}" />
           <zeebe:property name="topic.topicName" value="Portfolio" />
           <zeebe:property name="autoOffsetReset" value="latest" />
           <zeebe:property name="correlationKeyExpression" value="=value.name" />
@@ -261,9 +261,9 @@
       <bpmn:extensionElements>
         <zeebe:taskDefinition type="io.camunda:connector-kafka:1" />
         <zeebe:ioMapping>
-          <zeebe:input source="secrets.KafkaUsername" target="authentication.username" />
-          <zeebe:input source="secrets.KafkaPassword" target="authentication.password" />
-          <zeebe:input source="secrets.KafkaBootstrapServer" target="topic.bootstrapServers" />
+          <zeebe:input source="{{secrets.KafkaUsername}}" target="authentication.username" />
+          <zeebe:input source="{{secrets.KafkaPassword}}" target="authentication.password" />
+          <zeebe:input source="{{secrets.KafkaBootstrapServer}}" target="topic.bootstrapServers" />
           <zeebe:input source="Portfolio" target="topic.topicName" />
           <zeebe:input source="99" target="message.key" />
           <zeebe:input source="={&#34;name&#34;: name,&#10;&#34;source&#34; : &#34;Camunda&#34;}" target="message.value" />
@@ -284,9 +284,9 @@
       <bpmn:extensionElements>
         <zeebe:taskDefinition type="io.camunda:connector-kafka:1" />
         <zeebe:ioMapping>
-          <zeebe:input source="secrets.KafkaUsername" target="authentication.username" />
-          <zeebe:input source="secrets.KafkaPassword" target="authentication.password" />
-          <zeebe:input source="secrets.KafkaBootstrapServer" target="topic.bootstrapServers" />
+          <zeebe:input source="{{secrets.KafkaUsername}}" target="authentication.username" />
+          <zeebe:input source="{{secrets.KafkaPassword}}" target="authentication.password" />
+          <zeebe:input source="{{secrets.KafkaBootstrapServer}}" target="topic.bootstrapServers" />
           <zeebe:input source="Portfolio" target="topic.topicName" />
           <zeebe:input source="99" target="message.key" />
           <zeebe:input source="={&#34;name&#34;: name,&#10;&#34;source&#34; : &#34;Camunda&#34;}" target="message.value" />
@@ -307,9 +307,9 @@
         <zeebe:properties>
           <zeebe:property name="inbound.type" value="io.camunda:connector-kafka-inbound:1" />
           <zeebe:property name="authenticationType" value="credentials" />
-          <zeebe:property name="authentication.username" value="secrets.KafkaUsername" />
-          <zeebe:property name="authentication.password" value="secrets.KafkaPassword" />
-          <zeebe:property name="topic.bootstrapServers" value="secrets.KafkaBootstrapServer" />
+          <zeebe:property name="authentication.username" value="{{secrets.KafkaUsername}}" />
+          <zeebe:property name="authentication.password" value="{{secrets.KafkaPassword}}" />
+          <zeebe:property name="topic.bootstrapServers" value="{{secrets.KafkaBootstrapServer}}" />
           <zeebe:property name="topic.topicName" value="NewDetails" />
           <zeebe:property name="autoOffsetReset" value="latest" />
           <zeebe:property name="correlationKeyExpression" value="=value.name" />
