@@ -31,7 +31,7 @@ The message payload should look like this:
 ``` JSON
 {
   "name" : "Niall",
-  "details" : "Cool Niall Inc.",
+  "details" : "Great Hawks Inc.",
   "value" : 1000000,
   "newStock" : true
 }
